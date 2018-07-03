@@ -1,0 +1,5 @@
+var ossim = require('./build/Release/native.node')
+var metadata = ossim.metadata()
+console.log("METADATA: ",metadata)
+var test = JSON.stringify(metadata)
+console.log('ossim: ', test.image_file)
