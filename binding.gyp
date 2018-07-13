@@ -1,14 +1,14 @@
 {
   "targets": [
     {
-      "target_name": "native",
+      "target_name": "ossim",
       "sources": [
         "binding.cpp"
       ],
       "include_dirs": [
         "<!@(node -p \"require('node-addon-api').include\")",
+        "/usr/include/ossim/base/",
         "/usr/include/ossim/util",
-        "/usr/include/ossim/base",
         "/usr/include/ossim/elevation",
         "/usr/include/ossim/font",
         "/usr/include/ossim/imaging",
