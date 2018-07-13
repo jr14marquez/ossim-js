@@ -4,33 +4,29 @@
 #include <ostream>
 
 using namespace Napi;
-String metadata(const CallbackInfo& info) {
+String info(const CallbackInfo& info) {
   Env env = info.Env();
-  std::string filename = info[0].As<String>().Utf8Value();
 
-  std::string key;
-  std::string value;
+  napi_status status;
+  size_t argc = 2;
+  napi_value argv[2];
+  status = napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
+    
+  if(status != napi_ok) {
+      napi_throw_error(env, NULL, "Failed to parse arguments");
+  }
+
+  if(info.Length() < 2 || !info[0].IsObject()) {
+    Napi::TypeError::New(env, "Wrong number of args or second arg is not object.").ThrowAsJavaScriptException();
+  } 
+  std::string filename = info[0].As<String>().Utf8Value();
+  //const filename = "/home/rmarquez/Downloads/images/17MAR20054817-P1BS-056599362010_01_P004.NTF";
+  Object obj = info[1].As<Object>();
+  Value val1 = obj.Get("dumpFlag");
   ossimKeywordlist kwl;
 
-  //const ossimFilename = "/home/rmarquez/Downloads/images/17MAR20054817-P1BS-056599362010_01_P004.NTF";
-
-  // key = "build_date";
-  // value = "true";
-  // kwl.addPair( key, value );
-
-  // key = "image_file";
-  // value =filename;
-  // kwl.addPair( key, value );
-
-  // key = "geometry_info";
-  // kwl.addPair( key, value );
-
-  // key = "image_info";
-  // kwl.addPair( key, value );
-
-  // key = "metadata";
-  // kwl.addPair( key, value );
-            
+  
+           
   // Make the info object.
   ossimInfo* oi = new ossimInfo();
 
@@ -52,7 +48,7 @@ String metadata(const CallbackInfo& info) {
 }
 
 Object Init(Env env, Object exports) {
-  exports.Set(String::New(env,"metadata"), Function::New(env, metadata));
+  exports.Set(String::New(env,"info"), Function::New(env, info));
   return exports;
 }
 NODE_API_MODULE(addon, Init)
