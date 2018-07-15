@@ -1,4 +1,4 @@
-project (ossimjs)
+project (ossim)
 include_directories(${CMAKE_JS_INC})
 
 
