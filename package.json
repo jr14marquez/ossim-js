@@ -1,15 +1,17 @@
 {
-  "name": "ossim-js",
-  "version": "0.1.0",
-  "description": "Native bindings to the OSSIM(Open Source Software Image Map) geospatial image processing library",
+  "name": "native",
+  "version": "1.0.0",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "compile": "cmake-js compile"
   },
-  "author": "Raul Marquez Jr",
-  "license": "MIT License",
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "bindings": "^1.3.0",
+    "bindings": "^1.3.0"
+  },
+  "devDependencies": {
     "node-addon-api": "^1.3.0"
   }
 }

@@ -1,5 +1,5 @@
 #include <napi.h>
-#include <ossimInfo.h>
+#include <ossim/util/ossimInfo.h>
 #include <iostream>
 #include <ostream>
 
@@ -10,11 +10,11 @@ String info(const CallbackInfo& info) {
   napi_status status;
   size_t argc = 2;
   napi_value argv[2];
-  status = napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
+  // status = napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
     
-  if(status != napi_ok) {
-      napi_throw_error(env, NULL, "Failed to parse arguments");
-  }
+  // if(status != napi_ok) {
+  //     napi_throw_error(env, NULL, "Failed to parse arguments");
+  // }
 
   if(info.Length() < 2 || !info[0].IsObject()) {
     Napi::TypeError::New(env, "Wrong number of args or second arg is not object.").ThrowAsJavaScriptException();
