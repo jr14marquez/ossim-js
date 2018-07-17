@@ -1,11 +1,7 @@
 'use strict';
-const ossim = require('../build/Release/ossim.node')
+const ossim = require('bindings')('ossim');
 const Promise = require("bluebird");
 const fs = Promise.promisifyAll(require('fs'))
-
-
-//var metadata = JSON.parse(ossim.info("/home/rmarquez/Downloads/images/17MAR20054817-P1BS-056599362010_01_P004.NTF"))
-//goal: ossim.info(file,{options})
 
 /**
  * Parses ossim arguments
@@ -30,20 +26,21 @@ const argParser = (file,options) => {
 			.catch(err => {
 				reject(`${file} ${err.code === 'ENOENT' ? 'does not exist' : 'is not readable'}`)
 			})
+	})
 }
 /**
  * Adds commas to a number
- * @param {number} number
- * @param {string} locale
+ * @param {string} A file to call ossim info on 
+ * @param {object} options to gather info 
  * @return {string}
  */
 const info = (file,options) => {
-	argParser(file,options)
-		.then((flags) => {
-			return JSON.parse(ossim.info(file,options))
+	return argParser(file,options)
+		.then((parsed_options) => {
+			return JSON.parse(ossim.info(file,parsed_options)).info
 		})
 		.catch((err) => {
-			console.err(err)
+			console.error(err)
 		})
 };
 

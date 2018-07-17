@@ -2,13 +2,17 @@
 var ossim = require('../src/index.js')
 
 var options = {
-	dumpFlag: options.dumpFlag || false,
-	dnoFlag: options.dnoFlag || false,
-	imageGeomFlag: options.imageGeomFlag || false,
-	imageInfoFlag: options.imageInfoFlag || true,
-	metaDataFlag: options.metaDataFlag || false,
-	paletteFlag: options.paletteFlag || false
+	dumpFlag: false,
+	dnoFlag: false,
+	imageGeomFlag: false,
+	imageInfoFlag: true,
+	metaDataFlag: false,
+	paletteFlag: false
 }
 
-var info = ossim.info("/home/rmarquez/Downloads/images/17MAR20054817-P1BS-056599362010_01_P004.NTF",options)
-console.log('ossim info: ', info)
+ossim.info("/home/rmarquez/Downloads/images/17MAR20054817-P1BS-056599362010_01_P004.NTF",options)
+.then(data => {
+	console.log('data: ', data)
+})
+
+
