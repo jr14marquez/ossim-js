@@ -4,6 +4,6 @@
 
 #include <napi.h>
 
-Napi::Value CalculateSync(const Napi::CallbackInfo& info);
+Napi::String Info(const Napi::CallbackInfo& info);
 
 #endif  // OSSIM_INFO_H_

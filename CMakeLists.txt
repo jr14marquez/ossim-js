@@ -1,13 +1,13 @@
 cmake_minimum_required(VERSION 2.8)
 project (ossim)
-#unset(CMAKE_C_IMPLICIT_INCLUDE_DIRECTORIES)
-#unset(CMAKE_CXX_IMPLICIT_INCLUDE_DIRECTORIES)
+unset(CMAKE_C_IMPLICIT_INCLUDE_DIRECTORIES)
+unset(CMAKE_CXX_IMPLICIT_INCLUDE_DIRECTORIES)
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "/usr/share/ossim/CMakeModules")
 
 include_directories(${CMAKE_JS_INC})
 
-find_package( ossim REQUIRED)
+find_package( ossim REQUIRED )
 if( OSSIM_FOUND )
     include_directories( ${OSSIM_INCLUDE_DIR} )
 else( OSSIM_FOUND )
