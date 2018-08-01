@@ -2,8 +2,7 @@
 #include "ossim-info.h"   // NOLINT(build/include)
 #include "ossim-preproc.h"   // NOLINT(build/include)
 
-// Expose synchronous and asynchronous access to our
-// Estimate() function
+// Expose access to each function
 using namespace Napi;
 Object Init(Env env, Object exports) {
   exports.Set(String::New(env, "info"), Function::New(env, Info));
