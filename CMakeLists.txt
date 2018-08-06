@@ -23,7 +23,7 @@ else( JSONCPP_FOUND )
 endif( JSONCPP_FOUND )
 
 # Declare the source files location
-file(GLOB SOURCE_FILES "./src/*.cpp")
+file(GLOB SOURCE_FILES "./src/*.cpp" "./*.cpp")
 
 # This line will tell CMake that we're building a shared library
 # from the above source files

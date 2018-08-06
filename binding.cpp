@@ -1,6 +1,6 @@
 #include <napi.h>
-#include "ossim-info.h"   // NOLINT(build/include)
-#include "ossim-preproc.h"   // NOLINT(build/include)
+#include "src/ossim-info.h"   // NOLINT(build/include)
+#include "src/ossim-preproc.h"   // NOLINT(build/include)
 
 // Expose access to each function
 using namespace Napi;

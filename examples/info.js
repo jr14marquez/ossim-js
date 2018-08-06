@@ -1,5 +1,5 @@
 //var ossim = require('../build/Release/ossim.node')
-var ossim = require('../src/index.js')
+var ossim = require('../lib/ossim.js')
 
 var options = {
 	dumpFlag: false,
